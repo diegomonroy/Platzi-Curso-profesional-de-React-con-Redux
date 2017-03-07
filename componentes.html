@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Componentes</title>
+	</head>
+	<body>
+		<main id="app"></main>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.1/react.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.1/react-dom.js"></script>
+		<script type="text/babel">
+			function Hola(props) {
+				const name = props.name;
+
+				return (
+					<h1 id="Title">
+						Hola {name}
+					</h1>
+				);
+			}
+
+			class MiComponente extends React.Component {
+				constructor(props) {
+					super(props);
+
+					this.state = {
+						count: 0,
+					}
+
+					this.handleClick = this.handleClick.bind(this);
+				}
+				handleClick() {
+					this.setState({
+						count: this.state.count + 1,
+					});
+				}
+				render() {
+					const name = this.props.name;
+					return(
+						<h1 id="Title" onClick={this.handleClick}>
+							Hola {name} {this.state.count}
+						</h1>
+					);
+				}
+			}
+
+			class MiComponente1 extends React.PureComponent {
+				constructor(props) {
+					super(props);
+
+					this.state = {
+						count: 0,
+					}
+
+					this.handleClick = this.handleClick.bind(this);
+				}
+				handleClick() {
+					this.setState({
+						count: this.state.count + 1,
+					});
+				}
+				render() {
+					const name = this.props.name;
+					return(
+						<h1 id="Title" onClick={this.handleClick}>
+							Hola {name} {this.state.count}
+						</h1>
+					);
+				}
+			}
+
+			const OtroComponente = React.createClass({
+				getInitialState() {
+					return {
+						count: 0,
+					}
+				},
+				handleClick() {
+					this.setState({
+						count: this.state.count + 1,
+					});
+				},
+				render() {
+					const name = this.props.name;
+					return(
+						<h1 id="Title" onClick={this.handleClick}>
+							Hola {name} {this.state.count}
+						</h1>
+					);
+				}
+			});
+
+			ReactDOM.render(
+				<OtroComponente name="Platzi" />,
+				document.getElementById('app')
+			);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,7 @@
+# Ignore Files #
+################
+
+# Ignore Folders
+/node_modules/
+
+# Ignore Files
